@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ISO/IEC 20000-2 · Test 5 · Continuidad, disponibilidad, seguridad, auditoría y mejora</title>
+  <style>
+:root{
+  --bg:#0b1020;
+  --panel:#141b34;
+  --panel-2:#1b2447;
+  --text:#eef2ff;
+  --muted:#b9c2e6;
+  --ok:#1db954;
+  --bad:#ff5d73;
+  --accent:#6ea8fe;
+  --accent-2:#9b7bff;
+  --border:#2a3567;
+  --warning:#ffd166;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#0a0f1f,#101733 45%,#0d1430);color:var(--text)}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+.hero{background:linear-gradient(135deg,rgba(110,168,254,.18),rgba(155,123,255,.16));border:1px solid var(--border);border-radius:22px;padding:24px 24px 18px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 6px}
+.badge{background:#0f1733;border:1px solid var(--border);color:var(--muted);padding:8px 12px;border-radius:999px;font-size:13px}
+h1{margin:0 0 10px;font-size:34px;line-height:1.15}
+p.lead{margin:0;color:var(--muted);line-height:1.6}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}
+.card{background:rgba(20,27,52,.92);border:1px solid var(--border);border-radius:18px;padding:18px}
+.card h2,.card h3{margin-top:0}
+label{display:block;font-weight:700;margin:10px 0 6px}
+input[type=text]{width:100%;padding:14px 14px;border-radius:12px;border:1px solid var(--border);background:#0d1530;color:var(--text);font-size:15px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+button{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
+.btn-secondary{background:#202c57;color:var(--text);border:1px solid var(--border)}
+.notice{font-size:13px;color:var(--muted);line-height:1.5;background:#0d1530;border:1px dashed var(--border);padding:12px;border-radius:12px}
+.meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+.quiz-shell{display:none;margin-top:22px}
+.question-card{background:rgba(20,27,52,.96);border:1px solid var(--border);border-radius:18px;padding:18px;margin-bottom:16px}
+.question-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.q-index{font-size:13px;color:var(--muted)}
+.q-text{font-size:20px;font-weight:800;line-height:1.4;margin:8px 0 14px}
+.options{display:grid;gap:10px}
+.option{border:1px solid var(--border);background:#0f1733;border-radius:14px;padding:14px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:.15s}
+.option:hover{transform:translateY(-1px);border-color:#4b62b0}
+.option input{margin-top:4px}
+.option.correct{border-color:rgba(29,185,84,.7);background:rgba(29,185,84,.12)}
+.option.wrong{border-color:rgba(255,93,115,.7);background:rgba(255,93,115,.12)}
+.feedback{display:none;margin-top:14px;padding:14px;border-radius:14px;border:1px solid var(--border);background:#111936}
+.feedback.ok{border-color:rgba(29,185,84,.45)}
+.feedback.bad{border-color:rgba(255,93,115,.45)}
+.feedback h4{margin:0 0 8px}
+.quote{font-style:italic;color:#d9e2ff;background:#0c132b;border-left:4px solid var(--accent);padding:10px 12px;border-radius:8px;margin:10px 0}
+.muted{color:var(--muted)}
+.scorebar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.metric{background:#0f1733;border:1px solid var(--border);border-radius:16px;padding:14px}
+.metric .value{font-size:28px;font-weight:900}
+.metric .label{color:var(--muted);font-size:13px}
+.report{display:none;margin-top:26px}
+.report table{width:100%;border-collapse:collapse;font-size:14px}
+.report th,.report td{border:1px solid var(--border);padding:10px;vertical-align:top}
+.report th{background:#121b39;text-align:left}
+.pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800}
+.pill.ok{background:rgba(29,185,84,.16);color:#93ffc0;border:1px solid rgba(29,185,84,.35)}
+.pill.bad{background:rgba(255,93,115,.14);color:#ffb2bc;border:1px solid rgba(255,93,115,.35)}
+.footer-note{margin-top:16px;color:var(--muted);font-size:13px;line-height:1.5}
+@media print{
+  body{background:white;color:black}
+  .hero,.card,.question-card,.metric{box-shadow:none;background:white;color:black;border:1px solid #bbb}
+  .btn-primary,.btn-secondary,.actions,.notice{display:none !important}
+  .report{display:block !important}
+  .quiz-shell{display:none !important}
+}
+@media (max-width:860px){.grid{grid-template-columns:1fr}.scorebar{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="badges"><span class="badge">Capítulos 8, 9 y 10</span><span class="badge">Nivel experto</span><span class="badge">8 preguntas distintas</span></div>
+      <h1>ISO/IEC 20000-2 · Test 5 · Continuidad, disponibilidad, seguridad, auditoría y mejora</h1>
+      <p class="lead">Nivel experto sobre aseguramiento del servicio, evaluación del desempeño, revisión por la dirección, no conformidades y mejora continua.</p>
+      <div class="grid">
+        <div class="card">
+          <h2>Identificación del intento</h2>
+          <label for="username">Usuario visible en el informe</label>
+          <input id="username" type="text" maxlength="80" placeholder="Ej.: Ana López / Invitado 01" />
+          <div class="actions">
+            <button class="btn-primary" onclick="startQuiz()">Comenzar test</button>
+            <button class="btn-secondary" onclick="window.print()">Imprimir informe</button>
+          </div>
+          <p class="footer-note">La página no almacena datos en base de datos, cookies ni <em>localStorage</em>. Todo se calcula en tu navegador y solo se muestra en pantalla para evidenciar el intento de conocimiento.</p>
+        </div>
+        <div class="card">
+          <h3>Datos visibles</h3>
+          <div class="meta">
+            <div><strong>Fecha del intento:</strong> <span id="today"></span></div>
+            <div><strong>Preguntas:</strong> <span id="qCount"></span></div>
+            <div><strong>Nivel:</strong> Experto</div>
+          </div>
+          <div class="notice" style="margin-top:12px">
+            <strong>Cómo está diseñado:</strong> cada respuesta ofrece explicación de por qué tu opción es incorrecta o correcta y un apoyo textual breve tomado de la UNE-ISO/IEC 20000-2:2023. Los distractores están pensados para obligarte a distinguir matices reales de la norma.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz" class="quiz-shell"></section>
+
+    <section id="report" class="report card">
+      <h2>Informe del intento</h2>
+      <div class="scorebar">
+        <div class="metric"><div class="value" id="scorePct">0%</div><div class="label">Puntuación</div></div>
+        <div class="metric"><div class="value" id="scoreHits">0</div><div class="label">Aciertos</div></div>
+        <div class="metric"><div class="value" id="scoreFails">0</div><div class="label">Errores</div></div>
+        <div class="metric"><div class="value" id="reportUser">—</div><div class="label">Usuario</div></div>
+      </div>
+      <p class="muted"><strong>Fecha visible:</strong> <span id="reportDate"></span></p>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Pregunta</th><th>Respuesta del usuario</th><th>Respuesta correcta</th><th>Resultado</th></tr>
+        </thead>
+        <tbody id="reportBody"></tbody>
+      </table>
+      <p class="footer-note">Consejo de memorización: repasa primero las preguntas erradas, localiza el verbo normativo decisivo del extracto mostrado y repite el test cambiando el orden mental de tus descartes. Puedes reutilizar esta misma página todas las veces que quieras.</p>
+    </section>
+  </div>
+
+<script>
+const quizData = {"title": "ISO/IEC 20000-2 · Test 5 · Continuidad, disponibilidad, seguridad, auditoría y mejora", "questions": [{"q": "En continuidad del servicio, la expectativa principal es que la organización:", "options": ["Analice riesgos de pérdida grave de servicio, planifique la recuperación y pruebe los planes frente a requisitos definidos.", "Confíe solo en la continuidad del proveedor cloud.", "Active el plan únicamente después de auditoría interna.", "Reduzca la continuidad a copias de seguridad de datos."], "correct": 0, "clause": "continuidad", "quote": "analiza los riesgos de pérdida grave de servicio y planifica su recuperación. Los planes de continuidad del servicio se prueban", "why_correct": "Es correcta porque continuidad implica análisis, planificación, prueba e invocación cuando sea necesario, no una medida aislada.", "why_wrong": ["", "Es incorrecta porque la responsabilidad de continuidad sigue siendo organizativa aunque existan proveedores.", "Es incorrecta porque la activación depende de la necesidad operacional, no de auditoría.", "Es incorrecta porque continuidad del servicio es más amplia que backup de datos."]}, {"q": "Sobre disponibilidad, la lectura más precisa es que la organización debe:", "options": ["Determinar, acordar, documentar y mantener requisitos de disponibilidad con clientes y otras partes interesadas, monitorizando e investigando indisponibilidades no planificadas.", "Medir solo uptime mensual y no investigar causas si se cumple el SLA.", "Delegar la disponibilidad totalmente a infraestructura.", "Considerar la disponibilidad como parte exclusiva del diseño inicial."], "correct": 0, "clause": "disponibilidad", "quote": "determina, acuerda, documenta y mantiene los requisitos de disponibilidad de los servicios. La disponibilidad de los servicios se monitoriza y cualquier indisponibilidad no planificada se investiga", "why_correct": "Es correcta porque integra acuerdo, documentación, mantenimiento, monitorización e investigación de indisponibilidades.", "why_wrong": ["", "Es incorrecta porque investigar indisponibilidades forma parte de la guía, incluso con indicadores aceptables.", "Es incorrecta porque la responsabilidad no desaparece por delegarla técnicamente.", "Es incorrecta porque la disponibilidad debe mantenerse y revisarse operativamente, no solo en diseño inicial."]}, {"q": "La gestión de capacidad, según la guía, debe cubrir:", "options": ["Solo capacidad técnica de infraestructura.", "Recursos humanos, técnicos, de información y financieros necesarios para satisfacer requisitos de capacidad de los servicios.", "Únicamente previsiones presupuestarias.", "Solo crecimiento anual de usuarios."], "correct": 1, "clause": "capacidad", "quote": "recursos humanos, técnicos, de información y financieros necesarios para satisfacer los requisitos de capacidad de los servicios", "why_correct": "Es correcta porque la guía trata la capacidad como una disciplina multidimensional, no puramente técnica.", "why_wrong": ["Es incorrecta porque excluye dimensiones expresamente citadas por la norma.", "", "Es incorrecta porque la capacidad no se limita a presupuesto.", "Es incorrecta porque la demanda es relevante, pero no se reduce al crecimiento de usuarios."]}, {"q": "En seguridad de la información, la formulación más ajustada a la norma es:", "options": ["Definir una política relevante para la organización, aplicable al SGS y los servicios, evaluar riesgos y acordar controles para tratarlos.", "Aplicar únicamente controles técnicos ya implantados por TI.", "Tratar la seguridad de la información fuera del SGS para evitar duplicidades.", "Registrar solo incidencias de seguridad que provoquen fuga confirmada."], "correct": 0, "clause": "seguridad de la información", "quote": "define una política de seguridad de la información relevante para la organización, aplicable al SGS y los servicios... Se evalúan los riesgos ... y se acuerdan controles", "why_correct": "Es correcta porque reúne política, aplicabilidad al SGS, evaluación de riesgos y controles, que son el corazón del apartado.", "why_wrong": ["", "Es incorrecta porque la seguridad incluye controles organizativos, humanos y técnicos, no solo técnicos.", "Es incorrecta porque la norma la integra explícitamente en el SGS y los servicios.", "Es incorrecta porque las incidencias de seguridad deben registrarse y clasificarse cuando se identifican."]}, {"q": "En seguimiento, medición, análisis y evaluación del desempeño, la organización debe:", "options": ["Monitorizar, medir, analizar y evaluar el desempeño de la gestión de servicios y la eficacia del SGS y de los servicios.", "Medir solo indicadores con resultado favorable para la auditoría.", "Centrarse exclusivamente en satisfacción del cliente.", "Posponer mediciones hasta el cierre anual del ejercicio."], "correct": 0, "clause": "9.1", "quote": "La organización monitoriza, mide, analiza y evalúa el desempeño de la gestión de servicios y la eficacia del SGS y los servicios", "why_correct": "Es correcta porque recoge literalmente el alcance amplio del seguimiento y la evaluación del desempeño.", "why_wrong": ["", "Es incorrecta porque el SGS requiere evaluación objetiva, no sesgada.", "Es incorrecta porque la satisfacción es importante, pero no agota el desempeño del SGS.", "Es incorrecta porque la monitorización y medición no se conciben solo como cierre anual."]}, {"q": "Respecto a auditoría interna, el matiz experto correcto es que:", "options": ["Debe proporcionar una evaluación de conformidad del SGS con ISO/IEC 20000-1 y con los requisitos propios de la organización, idealmente con personal cualificado independiente de las áreas auditadas.", "Puede auditar el propio trabajo del auditor si conoce bien el proceso.", "Solo sirve para revisar indicadores de herramienta.", "Es un sustituto de la revisión por la dirección."], "correct": 0, "clause": "9.2", "quote": "proporcionar una evaluación de la conformidad del SGS ... y los propios requisitos de la organización", "why_correct": "Es correcta porque combina finalidad de conformidad e independencia cualificada, dos elementos clave del apartado de auditoría.", "why_wrong": ["", "Es incorrecta porque la independencia respecto al área auditada es un principio señalado por la guía.", "Es incorrecta porque la auditoría interna es mucho más amplia que revisar dashboards.", "Es incorrecta porque revisión por la dirección y auditoría tienen propósitos distintos."]}, {"q": "Una no conformidad, según la guía, es:", "options": ["Cualquier incidencia operativa del día a día.", "El incumplimiento de un requisito, que debe registrarse y analizarse en sus causas.", "Solo un fallo detectado por certificación externa.", "Una sugerencia de mejora no priorizada."], "correct": 1, "clause": "10.1", "quote": "Una no conformidad es el incumplimiento de un requisito. Las no conformidades del SGS se registran y se analizan las causas", "why_correct": "Es correcta porque define exactamente el concepto y el tratamiento mínimo esperado: registro y análisis de causas.", "why_wrong": ["Es incorrecta porque no toda incidencia equivale a no conformidad del SGS.", "", "Es incorrecta porque una no conformidad puede detectarse internamente.", "Es incorrecta porque una mejora potencial no es automáticamente una no conformidad."]}, {"q": "La mejora continua en ISO/IEC 20000-2 se entiende mejor como:", "options": ["Una iniciativa puntual posterior a la certificación.", "La mejora continua de la idoneidad, adecuación y eficacia del SGS y los servicios para mantener el valor para los clientes.", "Un catálogo de ideas sin implementación ni medición.", "Una responsabilidad exclusiva del gestor del servicio y no del sistema."], "correct": 1, "clause": "10.2", "quote": "mejora continuamente la idoneidad, adecuación y eficacia del SGS y los servicios para que se mantenga el valor para los clientes", "why_correct": "Es correcta porque refleja el propósito explícito del apartado 10.2 y subraya que la mejora debe mantener valor para el cliente.", "why_wrong": ["Es incorrecta porque la mejora continua no es puntual ni post-certificación solamente.", "", "Es incorrecta porque la guía habla de identificar, evaluar, priorizar, aprobar, implementar y medir oportunidades de mejora.", "Es incorrecta porque la mejora continua afecta al SGS completo y requiere implicación organizativa más amplia."]}]};
+const state = { answers: new Array(quizData.questions.length).fill(null), finished: false };
+
+function formatDate() {
+  const d = new Date();
+  return d.toLocaleString('es-ES', { dateStyle: 'full', timeStyle: 'short' });
+}
+
+document.getElementById('today').textContent = formatDate();
+document.getElementById('qCount').textContent = quizData.questions.length;
+
+document.title = quizData.title;
+
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'",'&#39;');
+}
+
+function startQuiz() {
+  renderQuiz();
+  document.getElementById('quiz').style.display = 'block';
+  window.scrollTo({top: document.getElementById('quiz').offsetTop - 10, behavior:'smooth'});
+}
+
+function renderQuiz() {
+  const shell = document.getElementById('quiz');
+  shell.innerHTML = quizData.questions.map((q, idx) => `
+    <article class="question-card" id="q-${idx}">
+      <div class="question-top">
+        <div>
+          <div class="q-index">Pregunta ${idx+1} de ${quizData.questions.length} · Cláusula ${escapeHtml(q.clause)}</div>
+          <div class="q-text">${escapeHtml(q.q)}</div>
+        </div>
+      </div>
+      <div class="options">
+        ${q.options.map((opt, optIdx) => `
+          <label class="option" id="q-${idx}-opt-${optIdx}">
+            <input type="radio" name="question-${idx}" onclick="answerQuestion(${idx}, ${optIdx})" ${state.answers[idx]===optIdx?'checked':''} />
+            <span><strong>${String.fromCharCode(65+optIdx)}.</strong> ${escapeHtml(opt)}</span>
+          </label>`).join('')}
+      </div>
+      <div class="feedback" id="feedback-${idx}"></div>
+    </article>
+  `).join('') + `
+    <div class="actions" style="margin-top:10px">
+      <button class="btn-primary" onclick="finishQuiz()">Finalizar y calcular puntuación</button>
+      <button class="btn-secondary" onclick="resetQuiz()">Reiniciar este test</button>
+    </div>`;
+}
+
+function answerQuestion(idx, selected) {
+  state.answers[idx] = selected;
+  const q = quizData.questions[idx];
+  q.options.forEach((_, optIdx) => {
+    const el = document.getElementById(`q-${idx}-opt-${optIdx}`);
+    el.classList.remove('correct','wrong');
+    if (optIdx === q.correct) el.classList.add('correct');
+    if (optIdx === selected && selected !== q.correct) el.classList.add('wrong');
+  });
+
+  const fb = document.getElementById(`feedback-${idx}`);
+  const ok = selected === q.correct;
+  fb.className = 'feedback ' + (ok ? 'ok' : 'bad');
+  const selectedText = q.options[selected];
+  const selectedWhy = q.why_wrong[selected] || 'Tu opción no coincide con la lógica del requisito aplicado en esta cláusula.';
+  fb.innerHTML = `
+    <h4>${ok ? '✅ Respuesta correcta' : '❌ Respuesta incorrecta'}</h4>
+    <p><strong>Tu elección:</strong> ${escapeHtml(selectedText)}</p>
+    ${ok ? `<p><strong>Por qué es correcta:</strong> ${escapeHtml(q.why_correct)}</p>` : `<p><strong>Por qué tu respuesta es incorrecta:</strong> ${escapeHtml(selectedWhy)}</p><p><strong>Por qué la correcta es la correcta:</strong> ${escapeHtml(q.why_correct)}</p>`}
+    <div class="quote"><strong>Apoyo textual breve:</strong> “${escapeHtml(q.quote)}”.</div>
+    <p class="muted"><strong>Cláusula orientativa:</strong> ${escapeHtml(q.clause)}</p>
+  `;
+  fb.style.display = 'block';
+}
+
+function finishQuiz() {
+  const unanswered = state.answers.map((v,i)=>v===null?i:null).filter(v=>v!==null);
+  if (unanswered.length) {
+    alert('Debes contestar todas las preguntas antes de calcular la puntuación. Pendientes: ' + unanswered.map(i=>i+1).join(', '));
+    document.getElementById(`q-${unanswered[0]}`).scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  const user = document.getElementById('username').value.trim() || 'Invitado';
+  const total = quizData.questions.length;
+  const hits = quizData.questions.filter((q, i) => q.correct === state.answers[i]).length;
+  const fails = total - hits;
+  const pct = Math.round((hits / total) * 100);
+
+  document.getElementById('scorePct').textContent = pct + '%';
+  document.getElementById('scoreHits').textContent = hits;
+  document.getElementById('scoreFails').textContent = fails;
+  document.getElementById('reportUser').textContent = user;
+  document.getElementById('reportDate').textContent = formatDate();
+
+  const body = document.getElementById('reportBody');
+  body.innerHTML = quizData.questions.map((q, i) => {
+    const selected = state.answers[i];
+    const ok = selected === q.correct;
+    return `
+      <tr>
+        <td>${i+1}</td>
+        <td>${escapeHtml(q.q)}<br><span class="muted">Cláusula: ${escapeHtml(q.clause)}</span></td>
+        <td>${escapeHtml(q.options[selected])}</td>
+        <td>${escapeHtml(q.options[q.correct])}</td>
+        <td><span class="pill ${ok ? 'ok' : 'bad'}">${ok ? 'Correcta' : 'Incorrecta'}</span></td>
+      </tr>`;
+  }).join('');
+
+  document.getElementById('report').style.display = 'block';
+  document.getElementById('report').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function resetQuiz() {
+  state.answers = new Array(quizData.questions.length).fill(null);
+  document.getElementById('report').style.display = 'none';
+  renderQuiz();
+}
+</script>
+</body>
+</html>

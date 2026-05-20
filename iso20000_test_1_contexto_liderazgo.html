@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ISO/IEC 20000-2 · Test 1 · Contexto, alcance y liderazgo</title>
+  <style>
+:root{
+  --bg:#0b1020;
+  --panel:#141b34;
+  --panel-2:#1b2447;
+  --text:#eef2ff;
+  --muted:#b9c2e6;
+  --ok:#1db954;
+  --bad:#ff5d73;
+  --accent:#6ea8fe;
+  --accent-2:#9b7bff;
+  --border:#2a3567;
+  --warning:#ffd166;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#0a0f1f,#101733 45%,#0d1430);color:var(--text)}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+.hero{background:linear-gradient(135deg,rgba(110,168,254,.18),rgba(155,123,255,.16));border:1px solid var(--border);border-radius:22px;padding:24px 24px 18px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 6px}
+.badge{background:#0f1733;border:1px solid var(--border);color:var(--muted);padding:8px 12px;border-radius:999px;font-size:13px}
+h1{margin:0 0 10px;font-size:34px;line-height:1.15}
+p.lead{margin:0;color:var(--muted);line-height:1.6}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}
+.card{background:rgba(20,27,52,.92);border:1px solid var(--border);border-radius:18px;padding:18px}
+.card h2,.card h3{margin-top:0}
+label{display:block;font-weight:700;margin:10px 0 6px}
+input[type=text]{width:100%;padding:14px 14px;border-radius:12px;border:1px solid var(--border);background:#0d1530;color:var(--text);font-size:15px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+button{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
+.btn-secondary{background:#202c57;color:var(--text);border:1px solid var(--border)}
+.notice{font-size:13px;color:var(--muted);line-height:1.5;background:#0d1530;border:1px dashed var(--border);padding:12px;border-radius:12px}
+.meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+.quiz-shell{display:none;margin-top:22px}
+.question-card{background:rgba(20,27,52,.96);border:1px solid var(--border);border-radius:18px;padding:18px;margin-bottom:16px}
+.question-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.q-index{font-size:13px;color:var(--muted)}
+.q-text{font-size:20px;font-weight:800;line-height:1.4;margin:8px 0 14px}
+.options{display:grid;gap:10px}
+.option{border:1px solid var(--border);background:#0f1733;border-radius:14px;padding:14px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:.15s}
+.option:hover{transform:translateY(-1px);border-color:#4b62b0}
+.option input{margin-top:4px}
+.option.correct{border-color:rgba(29,185,84,.7);background:rgba(29,185,84,.12)}
+.option.wrong{border-color:rgba(255,93,115,.7);background:rgba(255,93,115,.12)}
+.feedback{display:none;margin-top:14px;padding:14px;border-radius:14px;border:1px solid var(--border);background:#111936}
+.feedback.ok{border-color:rgba(29,185,84,.45)}
+.feedback.bad{border-color:rgba(255,93,115,.45)}
+.feedback h4{margin:0 0 8px}
+.quote{font-style:italic;color:#d9e2ff;background:#0c132b;border-left:4px solid var(--accent);padding:10px 12px;border-radius:8px;margin:10px 0}
+.muted{color:var(--muted)}
+.scorebar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.metric{background:#0f1733;border:1px solid var(--border);border-radius:16px;padding:14px}
+.metric .value{font-size:28px;font-weight:900}
+.metric .label{color:var(--muted);font-size:13px}
+.report{display:none;margin-top:26px}
+.report table{width:100%;border-collapse:collapse;font-size:14px}
+.report th,.report td{border:1px solid var(--border);padding:10px;vertical-align:top}
+.report th{background:#121b39;text-align:left}
+.pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800}
+.pill.ok{background:rgba(29,185,84,.16);color:#93ffc0;border:1px solid rgba(29,185,84,.35)}
+.pill.bad{background:rgba(255,93,115,.14);color:#ffb2bc;border:1px solid rgba(255,93,115,.35)}
+.footer-note{margin-top:16px;color:var(--muted);font-size:13px;line-height:1.5}
+@media print{
+  body{background:white;color:black}
+  .hero,.card,.question-card,.metric{box-shadow:none;background:white;color:black;border:1px solid #bbb}
+  .btn-primary,.btn-secondary,.actions,.notice{display:none !important}
+  .report{display:block !important}
+  .quiz-shell{display:none !important}
+}
+@media (max-width:860px){.grid{grid-template-columns:1fr}.scorebar{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="badges"><span class="badge">Capítulos 4 y 5</span><span class="badge">Nivel experto</span><span class="badge">8 preguntas distintas</span></div>
+      <h1>ISO/IEC 20000-2 · Test 1 · Contexto, alcance y liderazgo</h1>
+      <p class="lead">Autoevaluación experta de alta complejidad sobre contexto de la organización, partes interesadas, alcance, política, liderazgo y responsabilidades.</p>
+      <div class="grid">
+        <div class="card">
+          <h2>Identificación del intento</h2>
+          <label for="username">Usuario visible en el informe</label>
+          <input id="username" type="text" maxlength="80" placeholder="Ej.: Ana López / Invitado 01" />
+          <div class="actions">
+            <button class="btn-primary" onclick="startQuiz()">Comenzar test</button>
+            <button class="btn-secondary" onclick="window.print()">Imprimir informe</button>
+          </div>
+          <p class="footer-note">La página no almacena datos en base de datos, cookies ni <em>localStorage</em>. Todo se calcula en tu navegador y solo se muestra en pantalla para evidenciar el intento de conocimiento.</p>
+        </div>
+        <div class="card">
+          <h3>Datos visibles</h3>
+          <div class="meta">
+            <div><strong>Fecha del intento:</strong> <span id="today"></span></div>
+            <div><strong>Preguntas:</strong> <span id="qCount"></span></div>
+            <div><strong>Nivel:</strong> Experto</div>
+          </div>
+          <div class="notice" style="margin-top:12px">
+            <strong>Cómo está diseñado:</strong> cada respuesta ofrece explicación de por qué tu opción es incorrecta o correcta y un apoyo textual breve tomado de la UNE-ISO/IEC 20000-2:2023. Los distractores están pensados para obligarte a distinguir matices reales de la norma.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz" class="quiz-shell"></section>
+
+    <section id="report" class="report card">
+      <h2>Informe del intento</h2>
+      <div class="scorebar">
+        <div class="metric"><div class="value" id="scorePct">0%</div><div class="label">Puntuación</div></div>
+        <div class="metric"><div class="value" id="scoreHits">0</div><div class="label">Aciertos</div></div>
+        <div class="metric"><div class="value" id="scoreFails">0</div><div class="label">Errores</div></div>
+        <div class="metric"><div class="value" id="reportUser">—</div><div class="label">Usuario</div></div>
+      </div>
+      <p class="muted"><strong>Fecha visible:</strong> <span id="reportDate"></span></p>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Pregunta</th><th>Respuesta del usuario</th><th>Respuesta correcta</th><th>Resultado</th></tr>
+        </thead>
+        <tbody id="reportBody"></tbody>
+      </table>
+      <p class="footer-note">Consejo de memorización: repasa primero las preguntas erradas, localiza el verbo normativo decisivo del extracto mostrado y repite el test cambiando el orden mental de tus descartes. Puedes reutilizar esta misma página todas las veces que quieras.</p>
+    </section>
+  </div>
+
+<script>
+const quizData = {"title": "ISO/IEC 20000-2 · Test 1 · Contexto, alcance y liderazgo", "questions": [{"q": "Según la guía, ¿qué caracteriza mejor el análisis del contexto de la organización para el SGS?", "options": ["Debe limitarse a factores internos controlables para evitar subjetividad.", "Debe determinar cuestiones externas e internas pertinentes para el propósito de la organización y su capacidad de lograr los resultados previstos del SGS.", "Debe centrarse solo en requisitos contractuales del cliente, porque los demás factores ya se tratan en riesgos.", "Debe documentarse una sola vez al implantar el SGS y no revisarse salvo auditoría externa."], "correct": 1, "clause": "4.1", "quote": "determina las cuestiones externas e internas pertinentes para su propósito y que afectan a su capacidad para lograr los resultados previstos", "why_correct": "La opción correcta integra exactamente el enfoque del apartado 4.1: el contexto no se restringe a lo interno ni a lo contractual, sino a las cuestiones internas y externas relevantes para que el SGS consiga sus resultados.", "why_wrong": ["Es incorrecta porque excluye lo externo, y la norma exige expresamente considerar cuestiones externas e internas.", "", "Es incorrecta porque reduce el contexto a requisitos del cliente; la norma lo sitúa en un plano más amplio que incluye propósito, entorno y capacidad organizativa.", "Es incorrecta porque la guía enfatiza su revisión a intervalos planificados, no un ejercicio estático de una sola vez."]}, {"q": "En la identificación de partes interesadas del SGS, el enfoque más alineado con la norma es:", "options": ["Identificar únicamente clientes que firman el contrato principal.", "Registrar cualquier parte que pueda afectar o verse afectada por el SGS, incluyendo proveedores, reguladores, usuarios y otras partes interesadas pertinentes.", "Centrarse en usuarios finales y dejar fuera a proveedores porque se controlan por contrato.", "Documentar solo a las partes que hayan presentado una queja formal en el último año."], "correct": 1, "clause": "4.2", "quote": "comprensión de las necesidades y expectativas de las partes interesadas", "why_correct": "Es la correcta porque el SGS debe considerar el ecosistema de partes interesadas relevantes, no solo clientes contractuales. Esa comprensión condiciona requisitos, obligaciones y controles.", "why_wrong": ["Es incorrecta porque limita artificialmente el análisis a clientes firmantes y excluye otras partes relevantes.", "", "Es incorrecta porque los proveedores también son partes relevantes y su uso no elimina la necesidad de controlarlos dentro del SGS.", "Es incorrecta porque la relevancia de una parte interesada no depende de que haya reclamado recientemente."]}, {"q": "Respecto al alcance del SGS, la interpretación más sólida es que:", "options": ["Puede definirse en términos genéricos para no limitar la flexibilidad del proveedor.", "Debe omitir dependencias con terceros para no comprometer la certificación.", "Debe quedar claramente definido considerando servicios, clientes, ubicaciones, tecnologías y partes involucradas que afectan al servicio dentro del alcance.", "Debe coincidir necesariamente con toda la organización, sin excepciones."], "correct": 2, "clause": "4.3", "quote": "alcance del SGS", "why_correct": "Es la mejor respuesta porque el alcance debe ser preciso y defendible; la guía de ISO/IEC 20000-2 orienta a definir qué servicios y elementos organizativos quedan incluidos, junto con las dependencias relevantes.", "why_wrong": ["Es incorrecta porque un alcance vago dificulta demostrar control y conformidad.", "Es incorrecta porque ocultar dependencias con terceros contradice la necesidad de control de partes involucradas.", "", "Es incorrecta porque la norma no obliga a que el alcance abarque toda la organización; exige que el alcance definido sea claro y gestionable."]}, {"q": "¿Cuál es la afirmación más exacta sobre liderazgo y compromiso de la alta dirección?", "options": ["Puede delegar en un tercero la demostración de su compromiso siempre que el contrato sea sólido.", "Su responsabilidad principal es aprobar el presupuesto anual del SGS y nada más.", "Debe demostrar liderazgo y compromiso con respecto al SGS y es responsable del logro de los objetivos, sin trasladar esa responsabilidad a terceros.", "Solo interviene en la revisión del SGS cuando se detecta una no conformidad mayor."], "correct": 2, "clause": "5.1", "quote": "La alta dirección demuestra liderazgo y compromiso con respecto al SGS... es responsable del logro de los objetivos", "why_correct": "Es correcta porque recoge literalmente la idea central del apartado 5.1: la alta dirección no es decorativa; responde por la eficacia del SGS y por el logro de sus objetivos.", "why_wrong": ["Es incorrecta porque la norma niega expresamente que un tercero pueda sustituir a la alta dirección en esa demostración.", "Es incorrecta porque el liderazgo va mucho más allá del presupuesto: incluye dirección, alineamiento, recursos y control.", "", "Es incorrecta porque la implicación de la alta dirección debe ser continua, no solo reactiva ante fallos graves."]}, {"q": "La política de gestión del servicio, según la guía, debe ser:", "options": ["Una declaración separada del negocio y sin relación con los objetivos generales para preservar independencia técnica.", "Un texto operativo del centro de soporte, no necesariamente aprobado por la alta dirección.", "Una política alineada con los objetivos generales del negocio y utilizada como marco para el SGS.", "Un documento confidencial reservado a auditores y mandos intermedios."], "correct": 2, "clause": "5.2", "quote": "establece una política de gestión de servicios... alineada con los objetivos generales del negocio", "why_correct": "Es la correcta porque la política debe conectar el SGS con la dirección del negocio y servir de marco coherente para objetivos y decisiones.", "why_wrong": ["Es incorrecta porque la norma exige alineación con los objetivos generales del negocio.", "Es incorrecta porque la política pertenece al ámbito de la alta dirección y no es un mero documento operativo local.", "", "Es incorrecta porque la política debe comunicarse y sostener la concienciación del personal, no permanecer oculta."]}, {"q": "¿Qué enfoque refleja mejor las responsabilidades y autoridades en el SGS?", "options": ["Asignarlas informalmente mientras el equipo conozca su trabajo de forma tácita.", "Asignarlas y comunicarlas a toda la organización para los roles relevantes del SGS.", "Delegarlas por completo en proveedores externos especializados.", "Mantenerlas flexibles y no documentadas para facilitar cambios rápidos."], "correct": 1, "clause": "5.3", "quote": "asegura de que se asignen y comuniquen a toda la organización las responsabilidades y autoridades de los roles relevantes", "why_correct": "Es correcta porque la guía insiste en la asignación y comunicación explícita de responsabilidades y autoridades. Sin claridad de rol, se debilita el control del SGS.", "why_wrong": ["Es incorrecta porque el conocimiento tácito no sustituye a la asignación y comunicación formal requerida.", "", "Es incorrecta porque el uso de terceros no elimina la responsabilidad organizativa sobre el SGS.", "Es incorrecta porque la flexibilidad no justifica la ambigüedad; la autoridad debe ser clara y comunicada."]}, {"q": "La frase de la norma sobre terceros y alta dirección implica que:", "options": ["La organización puede pedir a un proveedor que actúe como alta dirección del SGS si tiene más experiencia.", "La organización no puede pedir a un tercero que proporcione la alta dirección ni que demuestre el control de las partes involucradas en su lugar.", "Solo en entornos multinacionales se permite externalizar la alta dirección del SGS.", "La prohibición afecta únicamente a auditorías internas, no al gobierno del SGS."], "correct": 1, "clause": "5.1 / control de partes involucradas", "quote": "La organización no puede pedir a un tercero que proporcione la alta dirección y demuestre su compromiso o que demuestre el control de las partes involucradas", "why_correct": "Es la correcta porque reproduce el sentido textual: la responsabilidad de gobernar el SGS y demostrar control sigue siendo de la organización.", "why_wrong": ["Es incorrecta porque contradice de forma directa el texto citado.", "", "Es incorrecta porque la guía no establece esa excepción.", "Es incorrecta porque el texto se refiere al compromiso y control del SGS, no solo a auditorías."]}, {"q": "¿Qué práctica sería más débil desde el punto de vista de conformidad experta con los capítulos 4 y 5?", "options": ["Revisar periódicamente cambios regulatorios y de mercado que afecten al servicio.", "Comunicar roles del SGS a toda la organización.", "Alinear la política de gestión del servicio con objetivos de negocio.", "Confiar en acuerdos con terceros sin demostrar internamente el control sobre los servicios en alcance."], "correct": 3, "clause": "4-5 y control de partes involucradas", "quote": "la organización se asegura de poder demostrar que controla a los proveedores", "why_correct": "Es la respuesta correcta porque la debilidad crítica está en confiar en terceros sin poder demostrar control propio. Ese enfoque compromete la evidencia de conformidad del SGS.", "why_wrong": ["Es incorrecta como opción de debilidad porque esa práctica sí es coherente con la revisión del contexto.", "Es incorrecta como opción de debilidad porque comunicar roles es precisamente lo esperado por la norma.", "Es incorrecta como opción de debilidad porque la política debe estar alineada con el negocio.", ""]}]};
+const state = { answers: new Array(quizData.questions.length).fill(null), finished: false };
+
+function formatDate() {
+  const d = new Date();
+  return d.toLocaleString('es-ES', { dateStyle: 'full', timeStyle: 'short' });
+}
+
+document.getElementById('today').textContent = formatDate();
+document.getElementById('qCount').textContent = quizData.questions.length;
+
+document.title = quizData.title;
+
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'",'&#39;');
+}
+
+function startQuiz() {
+  renderQuiz();
+  document.getElementById('quiz').style.display = 'block';
+  window.scrollTo({top: document.getElementById('quiz').offsetTop - 10, behavior:'smooth'});
+}
+
+function renderQuiz() {
+  const shell = document.getElementById('quiz');
+  shell.innerHTML = quizData.questions.map((q, idx) => `
+    <article class="question-card" id="q-${idx}">
+      <div class="question-top">
+        <div>
+          <div class="q-index">Pregunta ${idx+1} de ${quizData.questions.length} · Cláusula ${escapeHtml(q.clause)}</div>
+          <div class="q-text">${escapeHtml(q.q)}</div>
+        </div>
+      </div>
+      <div class="options">
+        ${q.options.map((opt, optIdx) => `
+          <label class="option" id="q-${idx}-opt-${optIdx}">
+            <input type="radio" name="question-${idx}" onclick="answerQuestion(${idx}, ${optIdx})" ${state.answers[idx]===optIdx?'checked':''} />
+            <span><strong>${String.fromCharCode(65+optIdx)}.</strong> ${escapeHtml(opt)}</span>
+          </label>`).join('')}
+      </div>
+      <div class="feedback" id="feedback-${idx}"></div>
+    </article>
+  `).join('') + `
+    <div class="actions" style="margin-top:10px">
+      <button class="btn-primary" onclick="finishQuiz()">Finalizar y calcular puntuación</button>
+      <button class="btn-secondary" onclick="resetQuiz()">Reiniciar este test</button>
+    </div>`;
+}
+
+function answerQuestion(idx, selected) {
+  state.answers[idx] = selected;
+  const q = quizData.questions[idx];
+  q.options.forEach((_, optIdx) => {
+    const el = document.getElementById(`q-${idx}-opt-${optIdx}`);
+    el.classList.remove('correct','wrong');
+    if (optIdx === q.correct) el.classList.add('correct');
+    if (optIdx === selected && selected !== q.correct) el.classList.add('wrong');
+  });
+
+  const fb = document.getElementById(`feedback-${idx}`);
+  const ok = selected === q.correct;
+  fb.className = 'feedback ' + (ok ? 'ok' : 'bad');
+  const selectedText = q.options[selected];
+  const selectedWhy = q.why_wrong[selected] || 'Tu opción no coincide con la lógica del requisito aplicado en esta cláusula.';
+  fb.innerHTML = `
+    <h4>${ok ? '✅ Respuesta correcta' : '❌ Respuesta incorrecta'}</h4>
+    <p><strong>Tu elección:</strong> ${escapeHtml(selectedText)}</p>
+    ${ok ? `<p><strong>Por qué es correcta:</strong> ${escapeHtml(q.why_correct)}</p>` : `<p><strong>Por qué tu respuesta es incorrecta:</strong> ${escapeHtml(selectedWhy)}</p><p><strong>Por qué la correcta es la correcta:</strong> ${escapeHtml(q.why_correct)}</p>`}
+    <div class="quote"><strong>Apoyo textual breve:</strong> “${escapeHtml(q.quote)}”.</div>
+    <p class="muted"><strong>Cláusula orientativa:</strong> ${escapeHtml(q.clause)}</p>
+  `;
+  fb.style.display = 'block';
+}
+
+function finishQuiz() {
+  const unanswered = state.answers.map((v,i)=>v===null?i:null).filter(v=>v!==null);
+  if (unanswered.length) {
+    alert('Debes contestar todas las preguntas antes de calcular la puntuación. Pendientes: ' + unanswered.map(i=>i+1).join(', '));
+    document.getElementById(`q-${unanswered[0]}`).scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  const user = document.getElementById('username').value.trim() || 'Invitado';
+  const total = quizData.questions.length;
+  const hits = quizData.questions.filter((q, i) => q.correct === state.answers[i]).length;
+  const fails = total - hits;
+  const pct = Math.round((hits / total) * 100);
+
+  document.getElementById('scorePct').textContent = pct + '%';
+  document.getElementById('scoreHits').textContent = hits;
+  document.getElementById('scoreFails').textContent = fails;
+  document.getElementById('reportUser').textContent = user;
+  document.getElementById('reportDate').textContent = formatDate();
+
+  const body = document.getElementById('reportBody');
+  body.innerHTML = quizData.questions.map((q, i) => {
+    const selected = state.answers[i];
+    const ok = selected === q.correct;
+    return `
+      <tr>
+        <td>${i+1}</td>
+        <td>${escapeHtml(q.q)}<br><span class="muted">Cláusula: ${escapeHtml(q.clause)}</span></td>
+        <td>${escapeHtml(q.options[selected])}</td>
+        <td>${escapeHtml(q.options[q.correct])}</td>
+        <td><span class="pill ${ok ? 'ok' : 'bad'}">${ok ? 'Correcta' : 'Incorrecta'}</span></td>
+      </tr>`;
+  }).join('');
+
+  document.getElementById('report').style.display = 'block';
+  document.getElementById('report').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function resetQuiz() {
+  state.answers = new Array(quizData.questions.length).fill(null);
+  document.getElementById('report').style.display = 'none';
+  renderQuiz();
+}
+</script>
+</body>
+</html>

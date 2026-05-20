@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ISO/IEC 20000-2 · Test 3 · Portafolio, catálogo, demanda, clientes y proveedores</title>
+  <style>
+:root{
+  --bg:#0b1020;
+  --panel:#141b34;
+  --panel-2:#1b2447;
+  --text:#eef2ff;
+  --muted:#b9c2e6;
+  --ok:#1db954;
+  --bad:#ff5d73;
+  --accent:#6ea8fe;
+  --accent-2:#9b7bff;
+  --border:#2a3567;
+  --warning:#ffd166;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#0a0f1f,#101733 45%,#0d1430);color:var(--text)}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+.hero{background:linear-gradient(135deg,rgba(110,168,254,.18),rgba(155,123,255,.16));border:1px solid var(--border);border-radius:22px;padding:24px 24px 18px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 6px}
+.badge{background:#0f1733;border:1px solid var(--border);color:var(--muted);padding:8px 12px;border-radius:999px;font-size:13px}
+h1{margin:0 0 10px;font-size:34px;line-height:1.15}
+p.lead{margin:0;color:var(--muted);line-height:1.6}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}
+.card{background:rgba(20,27,52,.92);border:1px solid var(--border);border-radius:18px;padding:18px}
+.card h2,.card h3{margin-top:0}
+label{display:block;font-weight:700;margin:10px 0 6px}
+input[type=text]{width:100%;padding:14px 14px;border-radius:12px;border:1px solid var(--border);background:#0d1530;color:var(--text);font-size:15px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+button{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
+.btn-secondary{background:#202c57;color:var(--text);border:1px solid var(--border)}
+.notice{font-size:13px;color:var(--muted);line-height:1.5;background:#0d1530;border:1px dashed var(--border);padding:12px;border-radius:12px}
+.meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+.quiz-shell{display:none;margin-top:22px}
+.question-card{background:rgba(20,27,52,.96);border:1px solid var(--border);border-radius:18px;padding:18px;margin-bottom:16px}
+.question-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.q-index{font-size:13px;color:var(--muted)}
+.q-text{font-size:20px;font-weight:800;line-height:1.4;margin:8px 0 14px}
+.options{display:grid;gap:10px}
+.option{border:1px solid var(--border);background:#0f1733;border-radius:14px;padding:14px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:.15s}
+.option:hover{transform:translateY(-1px);border-color:#4b62b0}
+.option input{margin-top:4px}
+.option.correct{border-color:rgba(29,185,84,.7);background:rgba(29,185,84,.12)}
+.option.wrong{border-color:rgba(255,93,115,.7);background:rgba(255,93,115,.12)}
+.feedback{display:none;margin-top:14px;padding:14px;border-radius:14px;border:1px solid var(--border);background:#111936}
+.feedback.ok{border-color:rgba(29,185,84,.45)}
+.feedback.bad{border-color:rgba(255,93,115,.45)}
+.feedback h4{margin:0 0 8px}
+.quote{font-style:italic;color:#d9e2ff;background:#0c132b;border-left:4px solid var(--accent);padding:10px 12px;border-radius:8px;margin:10px 0}
+.muted{color:var(--muted)}
+.scorebar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.metric{background:#0f1733;border:1px solid var(--border);border-radius:16px;padding:14px}
+.metric .value{font-size:28px;font-weight:900}
+.metric .label{color:var(--muted);font-size:13px}
+.report{display:none;margin-top:26px}
+.report table{width:100%;border-collapse:collapse;font-size:14px}
+.report th,.report td{border:1px solid var(--border);padding:10px;vertical-align:top}
+.report th{background:#121b39;text-align:left}
+.pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800}
+.pill.ok{background:rgba(29,185,84,.16);color:#93ffc0;border:1px solid rgba(29,185,84,.35)}
+.pill.bad{background:rgba(255,93,115,.14);color:#ffb2bc;border:1px solid rgba(255,93,115,.35)}
+.footer-note{margin-top:16px;color:var(--muted);font-size:13px;line-height:1.5}
+@media print{
+  body{background:white;color:black}
+  .hero,.card,.question-card,.metric{box-shadow:none;background:white;color:black;border:1px solid #bbb}
+  .btn-primary,.btn-secondary,.actions,.notice{display:none !important}
+  .report{display:block !important}
+  .quiz-shell{display:none !important}
+}
+@media (max-width:860px){.grid{grid-template-columns:1fr}.scorebar{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="badges"><span class="badge">Capítulo 8 (parte 1)</span><span class="badge">Nivel experto</span><span class="badge">8 preguntas distintas</span></div>
+      <h1>ISO/IEC 20000-2 · Test 3 · Portafolio, catálogo, demanda, clientes y proveedores</h1>
+      <p class="lead">Examen experto sobre control operacional, cartera de servicios, catálogo, relaciones con clientes, SLAs, demanda y proveedores externos.</p>
+      <div class="grid">
+        <div class="card">
+          <h2>Identificación del intento</h2>
+          <label for="username">Usuario visible en el informe</label>
+          <input id="username" type="text" maxlength="80" placeholder="Ej.: Ana López / Invitado 01" />
+          <div class="actions">
+            <button class="btn-primary" onclick="startQuiz()">Comenzar test</button>
+            <button class="btn-secondary" onclick="window.print()">Imprimir informe</button>
+          </div>
+          <p class="footer-note">La página no almacena datos en base de datos, cookies ni <em>localStorage</em>. Todo se calcula en tu navegador y solo se muestra en pantalla para evidenciar el intento de conocimiento.</p>
+        </div>
+        <div class="card">
+          <h3>Datos visibles</h3>
+          <div class="meta">
+            <div><strong>Fecha del intento:</strong> <span id="today"></span></div>
+            <div><strong>Preguntas:</strong> <span id="qCount"></span></div>
+            <div><strong>Nivel:</strong> Experto</div>
+          </div>
+          <div class="notice" style="margin-top:12px">
+            <strong>Cómo está diseñado:</strong> cada respuesta ofrece explicación de por qué tu opción es incorrecta o correcta y un apoyo textual breve tomado de la UNE-ISO/IEC 20000-2:2023. Los distractores están pensados para obligarte a distinguir matices reales de la norma.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz" class="quiz-shell"></section>
+
+    <section id="report" class="report card">
+      <h2>Informe del intento</h2>
+      <div class="scorebar">
+        <div class="metric"><div class="value" id="scorePct">0%</div><div class="label">Puntuación</div></div>
+        <div class="metric"><div class="value" id="scoreHits">0</div><div class="label">Aciertos</div></div>
+        <div class="metric"><div class="value" id="scoreFails">0</div><div class="label">Errores</div></div>
+        <div class="metric"><div class="value" id="reportUser">—</div><div class="label">Usuario</div></div>
+      </div>
+      <p class="muted"><strong>Fecha visible:</strong> <span id="reportDate"></span></p>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Pregunta</th><th>Respuesta del usuario</th><th>Respuesta correcta</th><th>Resultado</th></tr>
+        </thead>
+        <tbody id="reportBody"></tbody>
+      </table>
+      <p class="footer-note">Consejo de memorización: repasa primero las preguntas erradas, localiza el verbo normativo decisivo del extracto mostrado y repite el test cambiando el orden mental de tus descartes. Puedes reutilizar esta misma página todas las veces que quieras.</p>
+    </section>
+  </div>
+
+<script>
+const quizData = {"title": "ISO/IEC 20000-2 · Test 3 · Portafolio, catálogo, demanda, clientes y proveedores", "questions": [{"q": "¿Qué formulación describe mejor la obligación sobre el catálogo de servicios?", "options": ["La organización describe los servicios dentro del alcance del SGS en uno o varios catálogos de servicios.", "El catálogo puede omitir servicios internos porque no son visibles al cliente.", "El catálogo es opcional si existe una CMDB actualizada.", "Solo deben catalogarse los servicios con SLA financiero asociado."], "correct": 0, "clause": "8.2.4", "quote": "La organización describe los servicios dentro del alcance del SGS en uno o varios catálogos de servicios", "why_correct": "Es correcta porque recoge textualmente la exigencia de describir los servicios en alcance en uno o varios catálogos.", "why_wrong": ["", "Es incorrecta porque el criterio de inclusión depende del alcance del SGS, no solo de la visibilidad externa.", "Es incorrecta porque la CMDB no sustituye la función del catálogo de servicios.", "Es incorrecta porque el catálogo no se limita a servicios con impacto financiero explícito."]}, {"q": "La mejor interpretación del catálogo frente al portafolio es que:", "options": ["Son sinónimos y se pueden usar indistintamente sin pérdida de precisión.", "El catálogo describe servicios en alcance para su comunicación y gestión; el portafolio tiene una función más amplia de planificación y gobierno de servicios.", "El portafolio solo incluye servicios retirados y el catálogo solo servicios en diseño.", "El catálogo es un documento técnico para configuraciones, no para expectativas del cliente."], "correct": 1, "clause": "8.2", "quote": "catálogo de servicios / porfolio de servicios", "why_correct": "Es correcta porque la guía distingue la visión de gobierno y planificación del portafolio de la descripción operativa/comercial del catálogo para servicios en alcance.", "why_wrong": ["Es incorrecta porque, aunque relacionados, no son equivalentes.", "", "Es incorrecta porque esa clasificación no refleja la guía.", "Es incorrecta porque el catálogo sirve precisamente para describir servicios y apoyar expectativas y acuerdos."]}, {"q": "En relaciones con clientes, la organización debe:", "options": ["Limitarse a medir satisfacción una vez al año.", "Identificar y documentar clientes, usuarios y otras partes interesadas; definir protocolos de comunicación; gestionar quejas y buscar mejorar la satisfacción del cliente.", "Delegar la gestión de quejas al proveedor principal sin seguimiento interno.", "Evitar registrar otras partes interesadas para reducir burocracia."], "correct": 1, "clause": "8.3 / relaciones con el negocio", "quote": "identifica y documenta los clientes, usuarios y otras partes interesadas; define los protocolos de comunicación; ... gestiona las quejas sobre el servicio; y ... busca mejorar la satisfacción del cliente", "why_correct": "Es correcta porque integra varios elementos explícitos del proceso de relación con clientes: identificación, comunicación, quejas, revisión y mejora.", "why_wrong": ["Es incorrecta porque la gestión de la relación es continua y más amplia que una medición anual.", "", "Es incorrecta porque usar terceros no elimina la responsabilidad del proveedor del SGS.", "Es incorrecta porque las otras partes interesadas pueden aportar requisitos y retroalimentación relevantes."]}, {"q": "Respecto a proveedores externos, la organización debe poder demostrar que:", "options": ["Los controla y que el uso de proveedores no compromete los objetivos de nivel de servicio.", "No necesita control si el proveedor está certificado en otra norma.", "Basta con un contrato marco inicial sin seguimiento de desempeño.", "Los proveedores gestionan mejor el SGS que la propia organización."], "correct": 0, "clause": "7.1 / 8 proveedores", "quote": "La organización se asegura de poder demostrar que controla a los proveedores y que los objetivos de los niveles de servicio no se ven afectados por su uso", "why_correct": "Es correcta porque la norma exige evidencia de control sobre proveedores y de preservación de los niveles de servicio acordados.", "why_wrong": ["", "Es incorrecta porque una certificación ajena no sustituye el control dentro del SGS propio.", "Es incorrecta porque el control incluye seguimiento y evidencia, no solo contratación inicial.", "Es incorrecta porque la superioridad del proveedor no reemplaza la responsabilidad de la organización."]}, {"q": "¿Cuál sería un distractor típico pero incorrecto sobre la demanda y capacidad?", "options": ["La capacidad se planifica en función de niveles y tipos de demanda de los usuarios del servicio.", "La demanda puede influir en recursos humanos, técnicos, de información y financieros.", "La gestión de demanda y capacidad puede relacionarse con objetivos de nivel de servicio.", "La capacidad debe planificarse sin tener en cuenta la demanda para mantener independencia operativa."], "correct": 3, "clause": "8.4 / capacidad", "quote": "La capacidad se planifica en función de ... los niveles y tipos de demanda de los usuarios del servicio", "why_correct": "Es la respuesta correcta porque esa afirmación es la incorrecta desde el punto de vista normativo: la guía vincula expresamente capacidad y demanda.", "why_wrong": ["Es incorrecta como distractor porque sí refleja la norma.", "Es incorrecta como distractor porque la norma contempla varios tipos de recursos.", "Es incorrecta como distractor porque los objetivos de nivel de servicio son un referente real para planificar capacidad.", ""]}, {"q": "En acuerdos de nivel de servicio y otros acuerdos documentados, el enfoque más sólido es:", "options": ["Tratar los SLA como objetivos internos no necesariamente acordados con el cliente.", "Acordarlos, documentarlos, revisarlos y alinearlos con la capacidad y el desempeño monitorizado.", "Evitar revisarlos para preservar estabilidad contractual.", "Sustituirlos por métricas técnicas de herramienta."], "correct": 1, "clause": "8.3 / 8.7", "quote": "objetivos de nivel de servicio acordados", "why_correct": "Es correcta porque los niveles de servicio deben estar acordados y sostenidos por capacidad, seguimiento y revisión; no son simples métricas internas desconectadas.", "why_wrong": ["Es incorrecta porque vacía de sentido el concepto de acuerdo de nivel de servicio.", "", "Es incorrecta porque la mejora y la revisión forman parte del SGS.", "Es incorrecta porque las métricas técnicas pueden apoyar, pero no sustituir, el acuerdo de servicio."]}, {"q": "¿Qué práctica estaría más alineada con la guía en la gestión de otras partes involucradas?", "options": ["Considerarlas fuera del SGS siempre que no exista subcontratación completa.", "Controlarlas de forma demostrable cuando afecten a servicios en alcance, manteniendo la responsabilidad organizativa.", "Permitir que definan por sí solas el alcance del SGS.", "Excluirlas de revisiones por la dirección para evitar complejidad."], "correct": 1, "clause": "control de partes involucradas", "quote": "demuestre el control de las partes involucradas", "why_correct": "Es correcta porque la organización debe mantener responsabilidad y evidencia de control sobre partes involucradas que impactan el servicio.", "why_wrong": ["Es incorrecta porque pueden seguir siendo relevantes para el SGS aunque no exista externalización total.", "", "Es incorrecta porque el alcance lo determina la organización según la norma y su contexto.", "Es incorrecta porque su desempeño puede ser relevante para la revisión del SGS."]}, {"q": "La gestión de quejas en la relación con clientes, desde una perspectiva experta, debería entenderse como:", "options": ["Un tema comercial separado del SGS.", "Una fuente de información para analizar, revisar y mejorar la satisfacción y el desempeño del servicio.", "Un registro voluntario sin impacto en mejora continua.", "Una actividad reservada al área legal."], "correct": 1, "clause": "8.3", "quote": "gestiona las quejas sobre el servicio; y mide, analiza, revisa y busca mejorar la satisfacción del cliente", "why_correct": "Es correcta porque la guía enlaza gestión de quejas con medición, análisis, revisión y mejora, integrándola en el SGS.", "why_wrong": ["Es incorrecta porque la norma la sitúa dentro de la gestión de relaciones y satisfacción del cliente.", "", "Es incorrecta porque sí puede originar acciones de mejora y análisis.", "Es incorrecta porque requiere intervención operativa y de gestión, no solo legal."]}]};
+const state = { answers: new Array(quizData.questions.length).fill(null), finished: false };
+
+function formatDate() {
+  const d = new Date();
+  return d.toLocaleString('es-ES', { dateStyle: 'full', timeStyle: 'short' });
+}
+
+document.getElementById('today').textContent = formatDate();
+document.getElementById('qCount').textContent = quizData.questions.length;
+
+document.title = quizData.title;
+
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'",'&#39;');
+}
+
+function startQuiz() {
+  renderQuiz();
+  document.getElementById('quiz').style.display = 'block';
+  window.scrollTo({top: document.getElementById('quiz').offsetTop - 10, behavior:'smooth'});
+}
+
+function renderQuiz() {
+  const shell = document.getElementById('quiz');
+  shell.innerHTML = quizData.questions.map((q, idx) => `
+    <article class="question-card" id="q-${idx}">
+      <div class="question-top">
+        <div>
+          <div class="q-index">Pregunta ${idx+1} de ${quizData.questions.length} · Cláusula ${escapeHtml(q.clause)}</div>
+          <div class="q-text">${escapeHtml(q.q)}</div>
+        </div>
+      </div>
+      <div class="options">
+        ${q.options.map((opt, optIdx) => `
+          <label class="option" id="q-${idx}-opt-${optIdx}">
+            <input type="radio" name="question-${idx}" onclick="answerQuestion(${idx}, ${optIdx})" ${state.answers[idx]===optIdx?'checked':''} />
+            <span><strong>${String.fromCharCode(65+optIdx)}.</strong> ${escapeHtml(opt)}</span>
+          </label>`).join('')}
+      </div>
+      <div class="feedback" id="feedback-${idx}"></div>
+    </article>
+  `).join('') + `
+    <div class="actions" style="margin-top:10px">
+      <button class="btn-primary" onclick="finishQuiz()">Finalizar y calcular puntuación</button>
+      <button class="btn-secondary" onclick="resetQuiz()">Reiniciar este test</button>
+    </div>`;
+}
+
+function answerQuestion(idx, selected) {
+  state.answers[idx] = selected;
+  const q = quizData.questions[idx];
+  q.options.forEach((_, optIdx) => {
+    const el = document.getElementById(`q-${idx}-opt-${optIdx}`);
+    el.classList.remove('correct','wrong');
+    if (optIdx === q.correct) el.classList.add('correct');
+    if (optIdx === selected && selected !== q.correct) el.classList.add('wrong');
+  });
+
+  const fb = document.getElementById(`feedback-${idx}`);
+  const ok = selected === q.correct;
+  fb.className = 'feedback ' + (ok ? 'ok' : 'bad');
+  const selectedText = q.options[selected];
+  const selectedWhy = q.why_wrong[selected] || 'Tu opción no coincide con la lógica del requisito aplicado en esta cláusula.';
+  fb.innerHTML = `
+    <h4>${ok ? '✅ Respuesta correcta' : '❌ Respuesta incorrecta'}</h4>
+    <p><strong>Tu elección:</strong> ${escapeHtml(selectedText)}</p>
+    ${ok ? `<p><strong>Por qué es correcta:</strong> ${escapeHtml(q.why_correct)}</p>` : `<p><strong>Por qué tu respuesta es incorrecta:</strong> ${escapeHtml(selectedWhy)}</p><p><strong>Por qué la correcta es la correcta:</strong> ${escapeHtml(q.why_correct)}</p>`}
+    <div class="quote"><strong>Apoyo textual breve:</strong> “${escapeHtml(q.quote)}”.</div>
+    <p class="muted"><strong>Cláusula orientativa:</strong> ${escapeHtml(q.clause)}</p>
+  `;
+  fb.style.display = 'block';
+}
+
+function finishQuiz() {
+  const unanswered = state.answers.map((v,i)=>v===null?i:null).filter(v=>v!==null);
+  if (unanswered.length) {
+    alert('Debes contestar todas las preguntas antes de calcular la puntuación. Pendientes: ' + unanswered.map(i=>i+1).join(', '));
+    document.getElementById(`q-${unanswered[0]}`).scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  const user = document.getElementById('username').value.trim() || 'Invitado';
+  const total = quizData.questions.length;
+  const hits = quizData.questions.filter((q, i) => q.correct === state.answers[i]).length;
+  const fails = total - hits;
+  const pct = Math.round((hits / total) * 100);
+
+  document.getElementById('scorePct').textContent = pct + '%';
+  document.getElementById('scoreHits').textContent = hits;
+  document.getElementById('scoreFails').textContent = fails;
+  document.getElementById('reportUser').textContent = user;
+  document.getElementById('reportDate').textContent = formatDate();
+
+  const body = document.getElementById('reportBody');
+  body.innerHTML = quizData.questions.map((q, i) => {
+    const selected = state.answers[i];
+    const ok = selected === q.correct;
+    return `
+      <tr>
+        <td>${i+1}</td>
+        <td>${escapeHtml(q.q)}<br><span class="muted">Cláusula: ${escapeHtml(q.clause)}</span></td>
+        <td>${escapeHtml(q.options[selected])}</td>
+        <td>${escapeHtml(q.options[q.correct])}</td>
+        <td><span class="pill ${ok ? 'ok' : 'bad'}">${ok ? 'Correcta' : 'Incorrecta'}</span></td>
+      </tr>`;
+  }).join('');
+
+  document.getElementById('report').style.display = 'block';
+  document.getElementById('report').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function resetQuiz() {
+  state.answers = new Array(quizData.questions.length).fill(null);
+  document.getElementById('report').style.display = 'none';
+  renderQuiz();
+}
+</script>
+</body>
+</html>

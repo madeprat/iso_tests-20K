@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ISO/IEC 20000-2 · Test 4 · Diseño, transición, incidencias, solicitudes, problemas y configuración</title>
+  <style>
+:root{
+  --bg:#0b1020;
+  --panel:#141b34;
+  --panel-2:#1b2447;
+  --text:#eef2ff;
+  --muted:#b9c2e6;
+  --ok:#1db954;
+  --bad:#ff5d73;
+  --accent:#6ea8fe;
+  --accent-2:#9b7bff;
+  --border:#2a3567;
+  --warning:#ffd166;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#0a0f1f,#101733 45%,#0d1430);color:var(--text)}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+.hero{background:linear-gradient(135deg,rgba(110,168,254,.18),rgba(155,123,255,.16));border:1px solid var(--border);border-radius:22px;padding:24px 24px 18px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 6px}
+.badge{background:#0f1733;border:1px solid var(--border);color:var(--muted);padding:8px 12px;border-radius:999px;font-size:13px}
+h1{margin:0 0 10px;font-size:34px;line-height:1.15}
+p.lead{margin:0;color:var(--muted);line-height:1.6}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}
+.card{background:rgba(20,27,52,.92);border:1px solid var(--border);border-radius:18px;padding:18px}
+.card h2,.card h3{margin-top:0}
+label{display:block;font-weight:700;margin:10px 0 6px}
+input[type=text]{width:100%;padding:14px 14px;border-radius:12px;border:1px solid var(--border);background:#0d1530;color:var(--text);font-size:15px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+button{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
+.btn-secondary{background:#202c57;color:var(--text);border:1px solid var(--border)}
+.notice{font-size:13px;color:var(--muted);line-height:1.5;background:#0d1530;border:1px dashed var(--border);padding:12px;border-radius:12px}
+.meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+.quiz-shell{display:none;margin-top:22px}
+.question-card{background:rgba(20,27,52,.96);border:1px solid var(--border);border-radius:18px;padding:18px;margin-bottom:16px}
+.question-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.q-index{font-size:13px;color:var(--muted)}
+.q-text{font-size:20px;font-weight:800;line-height:1.4;margin:8px 0 14px}
+.options{display:grid;gap:10px}
+.option{border:1px solid var(--border);background:#0f1733;border-radius:14px;padding:14px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:.15s}
+.option:hover{transform:translateY(-1px);border-color:#4b62b0}
+.option input{margin-top:4px}
+.option.correct{border-color:rgba(29,185,84,.7);background:rgba(29,185,84,.12)}
+.option.wrong{border-color:rgba(255,93,115,.7);background:rgba(255,93,115,.12)}
+.feedback{display:none;margin-top:14px;padding:14px;border-radius:14px;border:1px solid var(--border);background:#111936}
+.feedback.ok{border-color:rgba(29,185,84,.45)}
+.feedback.bad{border-color:rgba(255,93,115,.45)}
+.feedback h4{margin:0 0 8px}
+.quote{font-style:italic;color:#d9e2ff;background:#0c132b;border-left:4px solid var(--accent);padding:10px 12px;border-radius:8px;margin:10px 0}
+.muted{color:var(--muted)}
+.scorebar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.metric{background:#0f1733;border:1px solid var(--border);border-radius:16px;padding:14px}
+.metric .value{font-size:28px;font-weight:900}
+.metric .label{color:var(--muted);font-size:13px}
+.report{display:none;margin-top:26px}
+.report table{width:100%;border-collapse:collapse;font-size:14px}
+.report th,.report td{border:1px solid var(--border);padding:10px;vertical-align:top}
+.report th{background:#121b39;text-align:left}
+.pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800}
+.pill.ok{background:rgba(29,185,84,.16);color:#93ffc0;border:1px solid rgba(29,185,84,.35)}
+.pill.bad{background:rgba(255,93,115,.14);color:#ffb2bc;border:1px solid rgba(255,93,115,.35)}
+.footer-note{margin-top:16px;color:var(--muted);font-size:13px;line-height:1.5}
+@media print{
+  body{background:white;color:black}
+  .hero,.card,.question-card,.metric{box-shadow:none;background:white;color:black;border:1px solid #bbb}
+  .btn-primary,.btn-secondary,.actions,.notice{display:none !important}
+  .report{display:block !important}
+  .quiz-shell{display:none !important}
+}
+@media (max-width:860px){.grid{grid-template-columns:1fr}.scorebar{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="badges"><span class="badge">Capítulo 8 (parte 2)</span><span class="badge">Nivel experto</span><span class="badge">8 preguntas distintas</span></div>
+      <h1>ISO/IEC 20000-2 · Test 4 · Diseño, transición, incidencias, solicitudes, problemas y configuración</h1>
+      <p class="lead">Bloque avanzado centrado en la operación del SGS y la calidad del diseño y la resolución del servicio.</p>
+      <div class="grid">
+        <div class="card">
+          <h2>Identificación del intento</h2>
+          <label for="username">Usuario visible en el informe</label>
+          <input id="username" type="text" maxlength="80" placeholder="Ej.: Ana López / Invitado 01" />
+          <div class="actions">
+            <button class="btn-primary" onclick="startQuiz()">Comenzar test</button>
+            <button class="btn-secondary" onclick="window.print()">Imprimir informe</button>
+          </div>
+          <p class="footer-note">La página no almacena datos en base de datos, cookies ni <em>localStorage</em>. Todo se calcula en tu navegador y solo se muestra en pantalla para evidenciar el intento de conocimiento.</p>
+        </div>
+        <div class="card">
+          <h3>Datos visibles</h3>
+          <div class="meta">
+            <div><strong>Fecha del intento:</strong> <span id="today"></span></div>
+            <div><strong>Preguntas:</strong> <span id="qCount"></span></div>
+            <div><strong>Nivel:</strong> Experto</div>
+          </div>
+          <div class="notice" style="margin-top:12px">
+            <strong>Cómo está diseñado:</strong> cada respuesta ofrece explicación de por qué tu opción es incorrecta o correcta y un apoyo textual breve tomado de la UNE-ISO/IEC 20000-2:2023. Los distractores están pensados para obligarte a distinguir matices reales de la norma.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz" class="quiz-shell"></section>
+
+    <section id="report" class="report card">
+      <h2>Informe del intento</h2>
+      <div class="scorebar">
+        <div class="metric"><div class="value" id="scorePct">0%</div><div class="label">Puntuación</div></div>
+        <div class="metric"><div class="value" id="scoreHits">0</div><div class="label">Aciertos</div></div>
+        <div class="metric"><div class="value" id="scoreFails">0</div><div class="label">Errores</div></div>
+        <div class="metric"><div class="value" id="reportUser">—</div><div class="label">Usuario</div></div>
+      </div>
+      <p class="muted"><strong>Fecha visible:</strong> <span id="reportDate"></span></p>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Pregunta</th><th>Respuesta del usuario</th><th>Respuesta correcta</th><th>Resultado</th></tr>
+        </thead>
+        <tbody id="reportBody"></tbody>
+      </table>
+      <p class="footer-note">Consejo de memorización: repasa primero las preguntas erradas, localiza el verbo normativo decisivo del extracto mostrado y repite el test cambiando el orden mental de tus descartes. Puedes reutilizar esta misma página todas las veces que quieras.</p>
+    </section>
+  </div>
+
+<script>
+const quizData = {"title": "ISO/IEC 20000-2 · Test 4 · Diseño, transición, incidencias, solicitudes, problemas y configuración", "questions": [{"q": "¿Qué secuencia expresa mejor la expectativa de la norma para servicios nuevos o modificados?", "options": ["Planificar, diseñar, construir y realizar la transición de los servicios basándose en requisitos de servicio acordados.", "Diseñar primero y definir requisitos después según incidencias tempranas.", "Construir e implantar sin criterios de aceptación para ganar velocidad.", "Pilotar permanentemente sin transición formal."], "correct": 0, "clause": "8.5 diseño y transición", "quote": "La organización planifica, diseña, construye y realiza la transición de los servicios basándose en los requisitos de servicio acordados", "why_correct": "Es correcta porque reproduce la lógica integral de diseño y transición prevista por la guía.", "why_wrong": ["", "Es incorrecta porque los requisitos de servicio acordados son base del diseño, no una consecuencia tardía.", "Es incorrecta porque la guía exige criterios de aceptación y demostración de cumplimiento.", "Es incorrecta porque la transición formal sigue siendo necesaria para controlar el paso a operación."]}, {"q": "El diseño de servicio documentado debe:", "options": ["Reflejar los requisitos de servicio para servicios nuevos o modificados identificados en la planificación del portafolio.", "Sustituir todos los acuerdos de servicio con clientes.", "Incluir únicamente diagramas técnicos de infraestructura.", "Ser opcional cuando el cambio es pequeño."], "correct": 0, "clause": "8.5 diseño", "quote": "un diseño de servicio documentado que refleja los requisitos de servicio para los servicios nuevos o modificados", "why_correct": "Es correcta porque el diseño documentado debe demostrar trazabilidad con los requisitos de servicio identificados.", "why_wrong": ["", "Es incorrecta porque el diseño no sustituye acuerdos ni SLAs.", "Es incorrecta porque su alcance es más amplio que la infraestructura técnica.", "Es incorrecta porque la guía enfatiza el control del diseño y transición de servicios nuevos o modificados."]}, {"q": "En la gestión de incidencias, el propósito principal es:", "options": ["Documentar lecciones aprendidas para el próximo proyecto.", "Restablecer los servicios afectados lo antes posible y dentro de los objetivos de nivel de servicio acordados.", "Eliminar definitivamente toda causa raíz conocida.", "Evitar registrar incidencias menores para reducir ruido."], "correct": 1, "clause": "8.6 incidencias", "quote": "restablecer los servicios afectados lo antes posible tras una incidencia y dentro de los objetivos de nivel de servicio acordados", "why_correct": "Es correcta porque expresa con precisión el objetivo de la gestión de incidencias: restauración rápida y alineada con niveles de servicio.", "why_wrong": ["Es incorrecta porque eso puede ser un resultado secundario, no el propósito central.", "", "Es incorrecta porque la causa raíz corresponde principalmente a gestión de problemas.", "Es incorrecta porque la norma exige registrar y clasificar incidencias cuando se identifican."]}, {"q": "¿Qué matiz experto es cierto sobre incidencias graves?", "options": ["La guía exige un procedimiento documentado específico para gestionarlas.", "Se gestionan igual que cualquier otra incidencia y no requieren preparación adicional.", "Solo se documentan si generan indisponibilidad total.", "Deben tratarse exclusivamente como problemas."], "correct": 0, "clause": "8.6 incidencias", "quote": "Se requiere un procedimiento documentado para la gestión de incidencias graves", "why_correct": "Es correcta porque la guía destaca específicamente la necesidad de un procedimiento documentado para incidencias graves.", "why_wrong": ["", "Es incorrecta porque la gravedad justifica un tratamiento procedimental explícito.", "Es incorrecta porque el requisito se basa en la categoría de incidencia grave, no en indisponibilidad total solamente.", "Es incorrecta porque una incidencia grave no deja de ser incidencia, aunque pueda desencadenar análisis de problemas."]}, {"q": "La secuencia mínima coherente para una petición de servicio es:", "options": ["Registrar, priorizar, ejecutar, actualizar y cerrar.", "Registrar, auditar y archivar.", "Diseñar, construir y desplegar.", "Clasificar como problema y escalar a cambio."], "correct": 0, "clause": "8.6 solicitudes de servicio", "quote": "La organización registra, prioriza, ejecuta, actualiza y cierra las peticiones de servicio", "why_correct": "Es correcta porque reproduce la secuencia operativa indicada por la norma para las solicitudes de servicio.", "why_wrong": ["", "Es incorrecta porque omite la ejecución real y no refleja el flujo previsto.", "Es incorrecta porque esa secuencia corresponde al diseño de servicios, no a solicitudes.", "Es incorrecta porque solicitud, problema y cambio son prácticas relacionadas pero no equivalentes."]}, {"q": "Sobre gestión de problemas, la afirmación más exacta es:", "options": ["Se activa solo tras una auditoría externa.", "Busca minimizar interrupciones mediante identificación y análisis proactivo de causas de incidencias y acciones preventivas o correctivas.", "Tiene como único objeto documentar errores conocidos sin resolverlos.", "Sustituye a la gestión de incidencias cuando hay tendencia repetitiva."], "correct": 1, "clause": "8.6 problemas", "quote": "minimizar las interrupciones de los servicios mediante la identificación y el análisis proactivo de las causas de las incidencias", "why_correct": "Es correcta porque describe el enfoque preventivo y analítico propio de la gestión de problemas.", "why_wrong": ["Es incorrecta porque la activación no depende de auditoría externa.", "", "Es incorrecta porque la gestión de problemas no se agota en registrar; también define acciones para prevenir y resolver.", "Es incorrecta porque no sustituye la gestión de incidencias; la complementa."]}, {"q": "Respecto a los elementos de configuración (CI), la organización debe:", "options": ["Identificarlos, registrarlos, controlarlos, rastrearlos y verificarlos, manteniendo conocida y actualizada su configuración y estado.", "Registrar solo los CI físicos con valor contable.", "Actualizar la información de configuración solo antes de auditorías.", "Dejar la verificación de CI al proveedor hardware."], "correct": 0, "clause": "configuración", "quote": "identifica, registra, controla, rastrea y verifica CIs", "why_correct": "Es correcta porque recoge el núcleo del control de configuración esperado por la guía.", "why_wrong": ["", "Es incorrecta porque la guía no limita los CI a activos físicos con valor contable.", "Es incorrecta porque la información debe estar actualizada de forma continua, no solo preauditoría.", "Es incorrecta porque la organización conserva el deber de control y verificación."]}, {"q": "¿Cuál de estas prácticas encaja mejor con la exactitud de la información de configuración?", "options": ["Evitar auditorías de configuración para no generar no conformidades innecesarias.", "Realizar auditorías periódicas de la información registrada sobre los CI y conservar registros de cambios y auditorías.", "Aceptar discrepancias temporales entre estado real y registrado como parte normal del servicio.", "Usar la CMDB solo para incidencias graves."], "correct": 1, "clause": "configuración", "quote": "Las organizaciones realizan auditorías periódicas de la información registrada sobre los CIs", "why_correct": "Es correcta porque la norma asocia exactitud y control a auditorías periódicas y registros mantenidos.", "why_wrong": ["Es incorrecta porque las auditorías son precisamente un mecanismo esperado de control.", "", "Es incorrecta porque el objetivo es conocer y actualizar la configuración y estado, no normalizar discrepancias.", "Es incorrecta porque la información de configuración sirve a más procesos que las incidencias graves."]}]};
+const state = { answers: new Array(quizData.questions.length).fill(null), finished: false };
+
+function formatDate() {
+  const d = new Date();
+  return d.toLocaleString('es-ES', { dateStyle: 'full', timeStyle: 'short' });
+}
+
+document.getElementById('today').textContent = formatDate();
+document.getElementById('qCount').textContent = quizData.questions.length;
+
+document.title = quizData.title;
+
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll('&','&amp;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;')
+    .replaceAll('"','&quot;')
+    .replaceAll("'",'&#39;');
+}
+
+function startQuiz() {
+  renderQuiz();
+  document.getElementById('quiz').style.display = 'block';
+  window.scrollTo({top: document.getElementById('quiz').offsetTop - 10, behavior:'smooth'});
+}
+
+function renderQuiz() {
+  const shell = document.getElementById('quiz');
+  shell.innerHTML = quizData.questions.map((q, idx) => `
+    <article class="question-card" id="q-${idx}">
+      <div class="question-top">
+        <div>
+          <div class="q-index">Pregunta ${idx+1} de ${quizData.questions.length} · Cláusula ${escapeHtml(q.clause)}</div>
+          <div class="q-text">${escapeHtml(q.q)}</div>
+        </div>
+      </div>
+      <div class="options">
+        ${q.options.map((opt, optIdx) => `
+          <label class="option" id="q-${idx}-opt-${optIdx}">
+            <input type="radio" name="question-${idx}" onclick="answerQuestion(${idx}, ${optIdx})" ${state.answers[idx]===optIdx?'checked':''} />
+            <span><strong>${String.fromCharCode(65+optIdx)}.</strong> ${escapeHtml(opt)}</span>
+          </label>`).join('')}
+      </div>
+      <div class="feedback" id="feedback-${idx}"></div>
+    </article>
+  `).join('') + `
+    <div class="actions" style="margin-top:10px">
+      <button class="btn-primary" onclick="finishQuiz()">Finalizar y calcular puntuación</button>
+      <button class="btn-secondary" onclick="resetQuiz()">Reiniciar este test</button>
+    </div>`;
+}
+
+function answerQuestion(idx, selected) {
+  state.answers[idx] = selected;
+  const q = quizData.questions[idx];
+  q.options.forEach((_, optIdx) => {
+    const el = document.getElementById(`q-${idx}-opt-${optIdx}`);
+    el.classList.remove('correct','wrong');
+    if (optIdx === q.correct) el.classList.add('correct');
+    if (optIdx === selected && selected !== q.correct) el.classList.add('wrong');
+  });
+
+  const fb = document.getElementById(`feedback-${idx}`);
+  const ok = selected === q.correct;
+  fb.className = 'feedback ' + (ok ? 'ok' : 'bad');
+  const selectedText = q.options[selected];
+  const selectedWhy = q.why_wrong[selected] || 'Tu opción no coincide con la lógica del requisito aplicado en esta cláusula.';
+  fb.innerHTML = `
+    <h4>${ok ? '✅ Respuesta correcta' : '❌ Respuesta incorrecta'}</h4>
+    <p><strong>Tu elección:</strong> ${escapeHtml(selectedText)}</p>
+    ${ok ? `<p><strong>Por qué es correcta:</strong> ${escapeHtml(q.why_correct)}</p>` : `<p><strong>Por qué tu respuesta es incorrecta:</strong> ${escapeHtml(selectedWhy)}</p><p><strong>Por qué la correcta es la correcta:</strong> ${escapeHtml(q.why_correct)}</p>`}
+    <div class="quote"><strong>Apoyo textual breve:</strong> “${escapeHtml(q.quote)}”.</div>
+    <p class="muted"><strong>Cláusula orientativa:</strong> ${escapeHtml(q.clause)}</p>
+  `;
+  fb.style.display = 'block';
+}
+
+function finishQuiz() {
+  const unanswered = state.answers.map((v,i)=>v===null?i:null).filter(v=>v!==null);
+  if (unanswered.length) {
+    alert('Debes contestar todas las preguntas antes de calcular la puntuación. Pendientes: ' + unanswered.map(i=>i+1).join(', '));
+    document.getElementById(`q-${unanswered[0]}`).scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  const user = document.getElementById('username').value.trim() || 'Invitado';
+  const total = quizData.questions.length;
+  const hits = quizData.questions.filter((q, i) => q.correct === state.answers[i]).length;
+  const fails = total - hits;
+  const pct = Math.round((hits / total) * 100);
+
+  document.getElementById('scorePct').textContent = pct + '%';
+  document.getElementById('scoreHits').textContent = hits;
+  document.getElementById('scoreFails').textContent = fails;
+  document.getElementById('reportUser').textContent = user;
+  document.getElementById('reportDate').textContent = formatDate();
+
+  const body = document.getElementById('reportBody');
+  body.innerHTML = quizData.questions.map((q, i) => {
+    const selected = state.answers[i];
+    const ok = selected === q.correct;
+    return `
+      <tr>
+        <td>${i+1}</td>
+        <td>${escapeHtml(q.q)}<br><span class="muted">Cláusula: ${escapeHtml(q.clause)}</span></td>
+        <td>${escapeHtml(q.options[selected])}</td>
+        <td>${escapeHtml(q.options[q.correct])}</td>
+        <td><span class="pill ${ok ? 'ok' : 'bad'}">${ok ? 'Correcta' : 'Incorrecta'}</span></td>
+      </tr>`;
+  }).join('');
+
+  document.getElementById('report').style.display = 'block';
+  document.getElementById('report').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function resetQuiz() {
+  state.answers = new Array(quizData.questions.length).fill(null);
+  document.getElementById('report').style.display = 'none';
+  renderQuiz();
+}
+</script>
+</body>
+</html>
